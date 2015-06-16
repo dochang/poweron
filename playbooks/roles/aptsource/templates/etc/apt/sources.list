@@ -1,0 +1,2 @@
+deb {{ aptsource_uri }} {{ aptsource_suite }} main non-free contrib
+deb-src {{ aptsource_uri }} {{ aptsource_suite }} main non-free contrib

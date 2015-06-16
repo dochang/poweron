@@ -1,0 +1,11 @@
+
+{tor}
+.tor-proxy.net
+.torproject.org
+.onion
+
+{direct}
+.lvh.me
+.vcap.me
+.localtest.me
+localhost

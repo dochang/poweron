@@ -1,0 +1,12 @@
+{
+  "server": "{{ mole_ss_server }}",
+  "server_port": {{ mole_ss_server_port }},
+  "password": "{{ mole_ss_password }}",
+  "port_password": {
+    "{{ mole_ss_server_port }}": "{{ mole_ss_password }}"
+  },
+  "local": "0.0.0.0",
+  "local_port": 1080,
+  "method": "{{ mole_ss_method }}",
+  "timeout": 600
+}

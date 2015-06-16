@@ -1,0 +1,11 @@
+---
+- template:
+    src: etc/apt/sources.list
+    dest: /etc/apt/sources.list
+    backup: no
+    owner: root
+    group: root
+    mode: 0644
+  notify: update apt cache
+
+- meta: flush_handlers

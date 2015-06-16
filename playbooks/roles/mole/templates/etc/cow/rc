@@ -1,0 +1,2 @@
+listen = http://0.0.0.0:7777
+proxy = ss://{{ mole_ss_method }}:{{ mole_ss_password }}@{{ mole_ss_server }}:{{ mole_ss_server_port }}

@@ -1,0 +1,9 @@
+---
+sources:
+  git:
+    - name: poweron
+      repo: https://github.com/dochang/poweron.git
+      playbooks:
+        - playbooks/upgrade-to-sid.yml
+        - playbooks/mole.yml
+        - playbooks/dotfiles.yml

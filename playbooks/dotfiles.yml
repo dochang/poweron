@@ -1,0 +1,29 @@
+---
+- hosts: 'all'
+  sudo: yes
+  sudo_user: '{{ ansible_ssh_user }} -i'
+
+  vars:
+    proxy: http://127.0.0.1:8118
+
+  tasks:
+
+    - name: Clean conflicting files
+      file:
+        path: '{{ item }}'
+        state: absent
+      with_items:
+        - ~/.bash_logout
+        - ~/.bashrc
+        - ~/.profile
+
+    - name: Install dotfiles & fresh
+      shell: 'curl -sSL get.freshshell.com | bash'
+      environment:
+        FRESH_LOCAL_SOURCE: https://github.com/dochang/dotfiles.git
+        http_proxy: '{{ proxy }}'
+        https_proxy: '{{ proxy }}'
+        no_proxy: 'localhost,127.0.0.1'
+
+    - name: bootstrap
+      command: ~/.dotfiles/bootstrap

@@ -1,0 +1,21 @@
+---
+- name: Autoremove apt
+  command: apt-get --yes autoremove --purge
+
+- name: Autoclean apt
+  command: apt-get --yes autoclean
+
+- name: Ensure docker installed
+  shell: 'which docker >/dev/null 2>&1 || curl -sSL https://get.docker.com/ | sh'
+
+- name: Add ansible_ssh_user into docker group
+  user:
+    name: '{{ ansible_ssh_user }}'
+    groups: docker
+    append: yes
+
+- name: Ensure docker started
+  service:
+    name: docker
+    enabled: yes
+    state: started

@@ -1,0 +1,3 @@
+{% if mole_cow_direct | default('', true) %}
+{{ mole_cow_direct }}
+{% endif %}
