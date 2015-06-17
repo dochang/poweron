@@ -1,3 +1,0 @@
-{% if mole_cow_blocked | default('', true) %}
-{{ mole_cow_blocked }}
-{% endif %}

@@ -5,5 +5,11 @@ sources:
       repo: https://github.com/dochang/poweron.git
       playbooks:
         - playbooks/upgrade-to-sid.yml
-        - playbooks/mole.yml
+    - name: mole
+      repo: https://github.com/dochang/mole.git
+      playbooks:
+        - mole.yml
+    - name: poweron
+      repo: https://github.com/dochang/poweron.git
+      playbooks:
         - playbooks/dotfiles.yml

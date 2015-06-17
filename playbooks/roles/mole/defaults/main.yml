@@ -1,4 +1,0 @@
----
-mole_volume_dir: /var/local/lib/mole
-mole_state: present
-mole_config_dir: '{{ lookup("env", "XDG_CONFIG_HOME") | default(lookup("env", "HOME") + "/.config", true) }}/mole'
