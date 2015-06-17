@@ -29,4 +29,4 @@ export BATTLE="${venv}/bin/battle"
 cache_dir=~/.battleschool/cache
 [ -d "${cache_dir}" ] || mkdir -p "${cache_dir}"
 
-"${BATTLE}" --config-file https://github.com/dochang/poweron/raw/master/poweron.yml --sudo --ask-sudo-pass --update-sources -vvv --extra-vars 'mole_state=running' "$@"
+"${BATTLE}" --config-file https://github.com/dochang/poweron/raw/master/poweron.yml --sudo --ask-sudo-pass --update-sources -vvv --extra-vars 'mole_state=started' "$@"
