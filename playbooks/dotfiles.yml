@@ -20,7 +20,7 @@
     - name: Install dotfiles & fresh
       shell: 'curl -sSL get.freshshell.com | bash'
       environment:
-        FRESH_LOCAL_SOURCE: https://github.com/dochang/dotfiles.git
+        FRESH_LOCAL_SOURCE: dochang/dotfiles
         http_proxy: '{{ proxy }}'
         https_proxy: '{{ proxy }}'
         no_proxy: 'localhost,127.0.0.1'
