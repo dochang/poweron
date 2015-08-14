@@ -8,6 +8,7 @@ Requirements
 
   - sudo
   - ca-certificates (Optional but recommended)
+  - curl, wget, git or any other downloader.
 
 Usage
 -----
