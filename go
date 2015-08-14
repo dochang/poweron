@@ -17,6 +17,13 @@ build-essential
 lsb-release
 EOF
 
+# Required by Nix installer
+sudo env DEBIAN_FRONTEND=noninteractive xargs apt-get --yes install <<EOF
+curl
+bzip2
+tar
+EOF
+
 # Install pip & virtualenv from pip instead of apt since these bugs:
 #
 # https://github.com/docker/docker-py/issues/525#issuecomment-79428103
@@ -44,8 +51,10 @@ export http_proxy=http://127.0.0.1:8118
 export https_proxy=http://127.0.0.1:8118
 export no_proxy=localhost,127.0.0.1
 
+curl https://nixos.org/nix/install | sh
+
 # Clean conflicting files
-rm -rf ~/.bash_logout ~/.bashrc ~/.profile
+rm -rf ~/.bash_logout ~/.bashrc ~/.profile ~/.nix-channels
 
 export FRESH_LOCAL_SOURCE=dochang/dotfiles
 
