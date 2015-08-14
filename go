@@ -38,12 +38,12 @@ EOF
 #
 # https://github.com/docker/docker-py/issues/525#issuecomment-79428103
 # https://bugs.launchpad.net/ubuntu/+source/python-pip/+bug/1306991
-curl -sSL https://bootstrap.pypa.io/get-pip.py | python2
+curl -sSL https://bootstrap.pypa.io/get-pip.py | sudo python2
 hash -r
-pip2 install -U pip
-pip2 install virtualenv
+sudo pip2 install -U pip
+sudo pip2 install virtualenv
 hash -r
-pip2 install -U virtualenv
+sudo pip2 install -U virtualenv
 
 venv=~/.local/venvs/battleschool
 [ ! -d "${venv}" ] || find "${venv}" -type l -delete
