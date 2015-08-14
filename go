@@ -61,7 +61,9 @@ export http_proxy=http://127.0.0.1:8118
 export https_proxy=http://127.0.0.1:8118
 export no_proxy=localhost,127.0.0.1
 
-curl https://nixos.org/nix/install | sh
+[ -d /nix/store ] || {
+	curl https://nixos.org/nix/install | sh
+}
 
 # Clean conflicting files
 rm -rf ~/.bash_logout ~/.bashrc ~/.profile ~/.nix-channels
