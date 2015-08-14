@@ -2,6 +2,16 @@
 
 set -e
 
+[ -n "$USER" ] || {
+	echo "ERROR: \$USER is not set" >&2
+	exit 1
+}
+
+[ "$(id -u)" -ne 0 ] || {
+	echo "ERROR: DO NOT run this script as *root* !" >&2
+	exit 2
+}
+
 sudo env DEBIAN_FRONTEND=noninteractive xargs apt-get --yes install <<EOF
 htop
 iotop
