@@ -55,7 +55,7 @@ export BATTLE="${venv}/bin/battle"
 cache_dir=~/.battleschool/cache
 [ -d "${cache_dir}" ] || mkdir -p "${cache_dir}"
 
-"${BATTLE}" --config-file https://github.com/dochang/poweron/raw/master/poweron.yml --sudo --ask-sudo-pass --update-sources -vvv --extra-vars 'mole_state=started' "$@"
+"${BATTLE}" --config-file https://github.com/dochang/poweron/raw/master/poweron.yml --sudo --ask-sudo-pass --update-sources -vvv --extra-vars 'mole_state=started' --extra-vars 'mole_docker_image_tag=slim' "$@"
 
 export http_proxy=http://127.0.0.1:8118
 export https_proxy=http://127.0.0.1:8118
