@@ -1,3 +1,0 @@
----
-aptsource_uri: http://httpredir.debian.org/debian
-aptsource_suite: '{{ ansible_lsb.codename }}'

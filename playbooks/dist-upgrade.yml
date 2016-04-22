@@ -1,8 +1,0 @@
----
-- apt:
-    update_cache: yes
-
-- apt:
-    upgrade: dist
-
-- command: reboot

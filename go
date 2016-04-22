@@ -27,49 +27,26 @@ build-essential
 lsb-release
 EOF
 
-# Required by Nix installer
-sudo env DEBIAN_FRONTEND=noninteractive xargs apt-get --yes install <<EOF
-curl
-bzip2
-tar
-EOF
-
 # Install pip & virtualenv from pip instead of apt since these bugs:
 #
 # https://github.com/docker/docker-py/issues/525#issuecomment-79428103
 # https://bugs.launchpad.net/ubuntu/+source/python-pip/+bug/1306991
-curl -sSL https://bootstrap.pypa.io/get-pip.py | sudo python2
+command -v pip2 >/dev/null 2>&1 || {
+	curl -sSL https://bootstrap.pypa.io/get-pip.py | sudo python2
+}
 hash -r
 sudo pip2 install -U pip
 sudo pip2 install virtualenv
 hash -r
 sudo pip2 install -U virtualenv
 
-venv=~/.local/venvs/battleschool
-[ ! -d "${venv}" ] || find "${venv}" -type l -delete
-virtualenv "${venv}"
-"${venv}/bin/pip" install -U 'git+https://github.com/dochang/battleschool.git@devel#egg=battleschool'
-hash -r
-export BATTLE="${venv}/bin/battle"
+: ${FRESH_LOCAL_SOURCE:=https://github.com/dochang/dotfiles.git}
+export FRESH_LOCAL_SOURCE
 
-cache_dir=~/.battleschool/cache
-[ -d "${cache_dir}" ] || mkdir -p "${cache_dir}"
-
-"${BATTLE}" --config-file https://github.com/dochang/poweron/raw/master/poweron.yml --sudo --ask-sudo-pass --update-sources -vvv --extra-vars 'mole_state=started' --extra-vars 'mole_docker_image_tag=slim' "$@"
-
-export http_proxy=http://127.0.0.1:8118
-export https_proxy=http://127.0.0.1:8118
-export no_proxy=localhost,127.0.0.1
-
-[ -d /nix/store ] || {
-	curl https://nixos.org/nix/install | sh
+[ -d ~/.dotfiles ] || {
+	curl -sSL get.freshshell.com | bash
 }
 
-# Clean conflicting files
-rm -rf ~/.bash_logout ~/.bashrc ~/.profile ~/.nix-channels
+cd ~/.dotfiles
 
-export FRESH_LOCAL_SOURCE=dochang/dotfiles
-
-curl -sSL get.freshshell.com | bash
-
-"${BATTLE}" --ask-sudo-pass -vvv "$@"
+./bootstrap upgrade-to-sid.yml --ask-sudo-pass -vvv "$@"

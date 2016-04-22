@@ -13,9 +13,5 @@ Requirements
 Usage
 -----
 
-    wget -O - https://github.com/dochang/poweron/raw/master/go | sh
-
-Or if a different apt source uri is needed:
-
-    wget -O - https://github.com/dochang/poweron/raw/master/go | sh -s -- --extra-vars 'aptsource_uri=http://example.com/debian'
+    wget -O - https://github.com/dochang/poweron/raw/master/go | sh -s -- -i <inventory> [ other ansible arguments ... ]
 
