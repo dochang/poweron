@@ -44,7 +44,7 @@ sudo pip2 install -U virtualenv
 export FRESH_LOCAL_SOURCE
 
 [ -d ~/.dotfiles ] || {
-	curl -sSL get.freshshell.com | bash
+	curl -sSL https://get.freshshell.com | bash
 }
 
 cd ~/.dotfiles
